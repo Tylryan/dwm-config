@@ -5,10 +5,18 @@ DWM_SOURCE_LOCATION="https://git.suckless.org/dwm"
 
 main()
 {
+    # install_xorg
     install_st_terminal &&
     install_with_dependencies &&
     create_xsession &&
     create_starter_script
+    chown_dwm
+}
+
+downoad_dwm()
+{
+    git clone $DWM_SOURCE_LOCATION
+    mv dwm .. && cd ../dwm
 }
 
 install_with_dependencies()
@@ -51,8 +59,13 @@ install_st_terminal()
     sudo dnf install st
 }
 
-temp()
+chown_dwm()
 {
-    sudo dnf install xorg-x11-server xorg-x11-xinit-session xorg-x11-xauth 
+    cd .. && sudo chown $USER dwm
+}
+
+install_xorg()
+{
+    sudo dnf install xorg-x11-server xorg-x11-xinit-session xorg-x11-xauth
 }
 main
