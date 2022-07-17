@@ -7,13 +7,14 @@ main()
 {
     # install_xorg
     install_st_terminal &&
+    # download_dwm
     install_with_dependencies &&
     create_xsession &&
     create_starter_script
-    chown_dwm
+    # chown_dwm
 }
 
-downoad_dwm()
+download_dwm()
 {
     git clone $DWM_SOURCE_LOCATION
     mv dwm .. && cd ../dwm
