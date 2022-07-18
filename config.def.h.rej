@@ -1,19 +1,13 @@
---- config.def.h
-+++ config.def.h
-@@ -2,6 +2,7 @@
- 
- /* appearance */
- static const unsigned int borderpx  = 1;        /* border pixel of windows */
-+static const unsigned int gappx     = 6;        /* gaps between windows */
- static const unsigned int snap      = 32;       /* snap pixel */
- static const int showbar            = 1;        /* 0 means no bar */
- static const int topbar             = 1;        /* 0 means bottom bar */
-@@ -34,7 +35,7 @@ static const Rule rules[] = {
- /* layout(s) */
- static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
- static const int nmaster     = 1;    /* number of clients in master area */
--static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
- static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
- 
- static const Layout layouts[] = {
+--- config.def.h	2014-06-23 18:04:29.536917000 +0200
++++ config.def.h	2014-06-24 08:15:51.857173332 +0200
+@@ -74,6 +74,10 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
++	{ MODKEY,                       XK_Left,   viewtoleft,     {0} },
++	{ MODKEY,                       XK_Right,  viewtoright,    {0} },
++	{ MODKEY|ShiftMask,             XK_Left,   tagtoleft,      {0} },
++	{ MODKEY|ShiftMask,             XK_Right,  tagtoright,     {0} },
+ 	TAGKEYS(                        XK_1,                      0)
+ 	TAGKEYS(                        XK_2,                      1)
+ 	TAGKEYS(                        XK_3,                      2)
