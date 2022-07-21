@@ -22,19 +22,19 @@ download_dwm()
 
 install_with_dependencies()
 {
-    sudo dnf install libX11-devel libXft-devel libXinerama-devel 
+    sudo dnf install libX11-devel libXft-devel libXinerama-devel xsetroot
     sudo make clean install
 }
 
 create_xsession()
 {
     #This goes in /usr/share/xsessions/dwm.desktop
-    sudo echo -e "[Desktop Entry]\r
-Encoding=UTF-8\r
-Name=DWM\r
-Comment=Dymanic window manager\r
-Exec="${STARTER_SCRIPT_PATH}"\r
-Icon=dwm\r
+    sudo echo -e "[Desktop Entry]
+Encoding=UTF-8
+Name=DWM
+Comment=Dymanic window manager
+Exec="${STARTER_SCRIPT_PATH}"
+Icon=dwm
 Type=Xsession"  > /usr/share/xsessions/dwm.desktop
 }
 
@@ -42,15 +42,15 @@ create_starter_script()
 {
     # This goes in /usr/share/X11/Xsession
     cur_dir="$(pwd)"
-    sudo echo -e "# source for the terminal\r
-xrdb -merge $HOME/.xres &\r
-#font\r
-xset fp+ $HOME/.fonts &\r
-xset fp rehash &\r 
-# Set keyboard layout to us\r 
-setxkbmap us & \r 
-setxkbmap -option caps:swapescape & \r
-\r 
+    sudo echo -e "# source for the terminal
+xrdb -merge $HOME/.xres &
+#font
+xset fp+ $HOME/.fonts &
+xset fp rehash &
+# Set keyboard layout to us
+setxkbmap us &
+setxkbmap -option caps:swapescape &
+feh --bg-fill "${cur_dir}"/background.jpg
 exec "${cur_dir}"/dwm" > $STARTER_SCRIPT_PATH
     sudo chmod +x $STARTER_SCRIPT_PATH
 }
