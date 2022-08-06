@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "scripting"
+name = "rust_installer"
 version = "0.1.0"
