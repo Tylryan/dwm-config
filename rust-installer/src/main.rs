@@ -17,19 +17,24 @@ use file_setup::*;
 fn main() 
 {
     // Eventually this will be from a file
+    // TODO: Get package manager appropriate versions for:
+    // Arch, Debian, and Freebsd
+    // TODO: Ask if dwmblocks is wanted
     let packages = vec![
         "libX11-devel", "libXft-devel",
-        "libXinerama-devel", "xsetroot"
+        "libXinerama-devel", "xsetroot",
+        "wmname", "fontawesome5-fonts-all"
     ]; 
 
-    let package_manager = PackageManager::new();
     // Install dependencies
+    let package_manager = PackageManager::new();
     package_manager
         .install(packages)
-        .expect("If this actually prints I'll be amazed");
+        .expect("Error installing packages");
 
-    // Make clean install
+    // Compile
     M::run("make clean install").unwrap();
+    // Setup required files
     DwmDesktop::write_file();
     Xsession::write_file();
     // chmod(args.get(1).unwrap().clone()).unwrap();

@@ -1,16 +1,17 @@
 use crate::M;
 
+static XSESSION_PATH: &str    = "/usr/share/X11/Xsession";
+static DWM_DESKTOP_PATH: &str = "/usr/share/xsessions/dwm.desktop";
+
 pub struct DwmDesktop {}
 pub struct Xsession {}
 
-static XSESSION_PATH: &str = "/usr/share/X11/Xsession";
-static DWM_DESKTOP_PATH: &str = "/usr/share/xsessions/dwm.desktop";
+
 impl DwmDesktop 
 {
     pub fn write_file()
     {
-        let cwd = cwd();
-        let home = std::env::var("HOME").unwrap();
+        let cwd      = cwd();
         let contents = format!("[Desktop Entry]
 Encoding=UTF-8
 Name=DWM
@@ -18,6 +19,7 @@ Comment=Dynamic Window Manager
 Exec={XSESSION_PATH}
 Icon={cwd}/dwm.png
 Type=Xsession");
+
         std::fs::write(DWM_DESKTOP_PATH, contents).expect("Could not write to dwm.desktop");
     }
 }

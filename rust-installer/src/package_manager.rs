@@ -26,10 +26,10 @@ impl PackageManager
         M::flush();
         for package in packages
         {
-            // let command = format!("{} {} {}", self.name, self.install, package);
+            let command = format!("{} {} {}", self.name, self.install, package);
             /* The below command is used for testing. Don't actually use 
              * sudo in your code */
-            let command = format!("sudo {} {} {}", self.name, self.install, package);
+            // let command = format!("sudo {} {} {}", self.name, self.install, package);
             M::run(&command)?;
         }
         Ok(())
@@ -53,6 +53,7 @@ fn set_package_manager_info(name: String) -> Option<(String, String, String)>
         "pacman" => Some((String::from("pacman"), String::from("-S"), String::from("-Rnsc"))),
         "apt"    => Some((String::from("apt"), String::from("install"), String::from("remove"))),
         "dnf"    => Some((String::from("dnf"), String::from("install"), String::from("remove"))),
+        // TODO: Add Freebsd
         _        => None
     }
 }
@@ -91,6 +92,7 @@ fn match_distro_response(distro: String) -> Option<String>
         "a" | "A" => Some(String::from("pacman")),
         "d" | "D" => Some(String::from("apt")),
         "f" | "F" => Some(String::from("dnf")),
+        //TODO: Add Freebsd (B)
         _ => None
     }
 }

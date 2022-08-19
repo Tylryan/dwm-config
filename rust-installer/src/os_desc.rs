@@ -16,11 +16,12 @@ impl OS
 
     pub fn get_name() -> Result<String, String>
     {
+        // TODO: Will this work for BSD?
         let os_info_path = "/etc/os-release";
-        let contents = match OS::read_file(os_info_path)
+        let contents     = match OS::read_file(os_info_path)
         {
             Ok(c) => c,
-            Err(_) => return Err(String::from("Error: Need to find out where this Distro hides it's info."))
+            Err(_) => return Err(String::from("Error: Failed to read \"/etc/os-release\""))
         };
 
         return OS::grep_for("ID", contents, os_info_path);
@@ -42,9 +43,9 @@ impl OS
                 return Ok(cleaned)
             }
         }
+
         let error_msg = format!("Error: Could not find \"ID\" in {os_info_path}");
         Err(error_msg)
-
     }
 
     fn read_file(file_path: &str) -> Result<String, Error>
