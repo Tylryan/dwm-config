@@ -1,1 +1,0 @@
-/home/tyler/.config/dwm/rust-installer/target/release/rust_installer: /home/tyler/.config/dwm/rust-installer/src/file_setup.rs /home/tyler/.config/dwm/rust-installer/src/main.rs /home/tyler/.config/dwm/rust-installer/src/misc.rs /home/tyler/.config/dwm/rust-installer/src/os_desc.rs /home/tyler/.config/dwm/rust-installer/src/package_manager.rs
