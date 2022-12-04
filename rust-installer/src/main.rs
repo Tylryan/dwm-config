@@ -23,7 +23,8 @@ fn main()
     let packages = vec![
         "libX11-devel", "libXft-devel",
         "libXinerama-devel", "xsetroot",
-        "wmname", "fontawesome5-fonts-all"
+        "wmname", "fontawesome5-fonts-all",
+        "flameshot"
     ]; 
 
     // Install dependencies

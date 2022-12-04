@@ -39,6 +39,8 @@ setxkbmap us &
 # Swap escape and caps
 setxkbmap -option caps:swapescape &
 feh --bg-fill {cwd}/background.jpg &
+wmname LG3D &
+flameshot &
 exec {cwd}/dwm");
 
         std::fs::write(XSESSION_PATH, contents).expect("Could not Write Xsession");

@@ -73,8 +73,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *browser[]  = { "firefox", NULL };
+static const char *screenshot[]  = { "gnome-terminal -a -c", NULL };
 static const char *lock_suspend[] = {"bash", "-c", "i3lock --color 000000 && systemctl suspend"};
 
 static Key keys[] = {
@@ -84,6 +85,7 @@ static Key keys[] = {
 	{ MODKEY,             		    XK_Return, spawn,          {.v = termcmd  } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = browser  } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lock_suspend} },
+	{ MODKEY,                       XK_s,      spawn,          {.v = screenshot} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
     // TODO: Focus window panes. There must be a better way
 	{ MODKEY,                       XK_h,      focusstack,     {.i = +1 } },
